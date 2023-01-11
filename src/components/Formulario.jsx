@@ -28,23 +28,23 @@ const InputSubmit = styled.input`
 const Formulario = ({setMonedas}) => {
 	const [criptos, setCriptos] = useState([]);
 	const [error, setError] = useState(false);
-	const [moneda,SelectMonedas] = useSelectMonedas("Elige tu moneda", monedas);
-	const [criptomoneda,SelectCriptomoneda] = useSelectMonedas("Elige tu Criptomoneda", criptos );
+	const [moneda, SelectMonedas] = useSelectMonedas("Elige tu moneda", monedas);
+	const [criptomoneda, SelectCriptomoneda] = useSelectMonedas("Elige tu Criptomoneda", criptos );
 
 	useEffect(() =>{
 		const consultarAPI = async () => {	
 			const url ="https://min-api.cryptocompare.com/data/top/mktcapfull?limit=20&tsym=USD"
-			const respuesta = await fetch(url)
-			const resultado = await respuesta.json()
+			const respuesta = await fetch(url);
+			const resultado = await respuesta.json();
 
-			const arrayCriptos = resultado.Data.map(cripto=>{
+			const arrayCriptos = resultado.Data.map(cripto => {
 				const objeto = {
 					id:cripto.CoinInfo.Name,
 					nombre:cripto.CoinInfo.FullName	
 				}
 
 				return objeto;
-			})
+			});
 
 			setCriptos(arrayCriptos);
 		}
@@ -66,8 +66,9 @@ const Formulario = ({setMonedas}) => {
 		setMonedas({
 			moneda,
 			criptomoneda
-		})
+		});
 	}
+
 	return (
 		<>
 			{error && <Error>Todos los Campos son Obligatorios</Error>}

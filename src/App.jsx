@@ -35,7 +35,7 @@ const Heading = styled.h1`
 	}
 `
 
-const Imagen =styled.img`
+const Imagen = styled.img`
 	max-width:400px;
 	width:80%;
 	margin:100px auto 0 auto;
@@ -55,19 +55,19 @@ function App() {
 				setResultado({});
 
 				const {moneda, criptomoneda} = monedas;
-				const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`
+				const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${criptomoneda}&tsyms=${moneda}`;
 
-				const respuesta = await fetch(url)
-				const resultado = await respuesta.json()
+				const respuesta = await fetch(url);
+				const resultado = await respuesta.json();
 
-				setResultado(resultado.DISPLAY[criptomoneda][moneda])
+				setResultado(resultado.DISPLAY[criptomoneda][moneda]);
 
 				setCargando(false);
 			}
 
 			cotizarCripto();
 		}
-	},[monedas])
+	},[monedas]);
 
 	return (
 		<Contenedor>
